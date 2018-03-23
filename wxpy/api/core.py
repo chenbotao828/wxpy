@@ -1142,6 +1142,12 @@ class Core(object):
             if _username not in self.data.raw_chats:
                 # Todo: 如果 UserName 为 fmessage 则返回一个昵称为 朋友推荐消息 的聊天对象
                 # Todo: 如果 UserName 为 filehelper 则返回一个昵称为 文件传输助手 的聊天对象
+                if _username == 'fmessage':
+                    return Friend(self,{
+                        'UserName': 'fmessage','NickName': '朋友推荐消息',})
+                elif _username == 'filehelper':
+                    return Friend(self,{
+                        'UserName': 'filehelper','NickName': '文件传输助手',})
                 self.batch_get_contact(_username)
             if _username in self.data.raw_chats:
                 raw_chat = self.data.raw_chats[_username]
